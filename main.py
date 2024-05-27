@@ -7,8 +7,8 @@ high_score = init_high
 
 run = True
 while run:
-    timer.tick(fps)
-    screen.fill('gray')
+    TIMER.tick(FPS)
+    SCREEN.fill('gray')
 
     render_board(score, high_score)
     render_pieces(board_values)

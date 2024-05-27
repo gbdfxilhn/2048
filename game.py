@@ -4,11 +4,11 @@ import random
 pygame.init()
 
 WIDTH, HEIGHT = 400, 500
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
+SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('2048')
-timer = pygame.time.Clock()
-fps = 60
-font = pygame.font.Font('freesansbold.ttf', 24)
+TIMER = pygame.time.Clock()
+FPS = 60
+FONT = pygame.font.Font('freesansbold.ttf', 24)
 
 colors = {
     0: (204, 192, 179),
@@ -36,11 +36,11 @@ init_count = 0
 direction = ''
 
 def draw_game_over():
-    pygame.draw.rect(screen, 'black', (50, 50, 300, 100), border_radius=10)
-    text1 = font.render('Game Over!', True, 'white')
-    text2 = font.render('Press Enter to Restart', True, 'white')
-    screen.blit(text1, (130, 65))
-    screen.blit(text2, (70, 105))
+    pygame.draw.rect(SCREEN, 'black', (50, 50, 300, 100), border_radius=10)
+    text1 = FONT.render('Game Over!', True, 'white')
+    text2 = FONT.render('Press Enter to Restart', True, 'white')
+    SCREEN.blit(text1, (130, 65))
+    SCREEN.blit(text2, (70, 105))
 
 def update_board(direction, board, score):
     merged = [[False] * 4 for _ in range(4)]
@@ -109,11 +109,11 @@ def spawn_new_piece(board):
     return board, not empty_cells
 
 def render_board(score, high_score):
-    pygame.draw.rect(screen, colors['bg'], (0, 0, WIDTH, WIDTH), border_radius=10)
-    score_text = font.render(f'Score: {score}', True, 'black')
-    high_score_text = font.render(f'High Score: {high_score}', True, 'black')
-    screen.blit(score_text, (10, 410))
-    screen.blit(high_score_text, (10, 450))
+    pygame.draw.rect(SCREEN, colors['bg'], (0, 0, WIDTH, WIDTH), border_radius=10)
+    score_text = FONT.render(f'Score: {score}', True, 'black')
+    high_score_text = FONT.render(f'High Score: {high_score}', True, 'black')
+    SCREEN.blit(score_text, (10, 410))
+    SCREEN.blit(high_score_text, (10, 450))
 
 def render_pieces(board):
     for i in range(4):
@@ -121,8 +121,8 @@ def render_pieces(board):
             value = board[i][j]
             color = colors.get(value, colors['other'])
             value_color = colors['light_text'] if value > 8 else colors['dark_text']
-            pygame.draw.rect(screen, color, (j * 97.5 + 10, i * 97.5 + 10, 87.5, 87.5), border_radius=5)
+            pygame.draw.rect(SCREEN, color, (j * 97.5 + 10, i * 97.5 + 10, 87.5, 87.5), border_radius=5)
             if value:
                 value_text = pygame.font.SysFont('comicsans', 48 - 5 * len(str(value)), bold=True).render(str(value), True, value_color)
                 text_rect = value_text.get_rect(center=(j * 97.5 + 53.75, i * 97.5 + 53.75))
-                screen.blit(value_text, text_rect)
+                SCREEN.blit(value_text, text_rect)
