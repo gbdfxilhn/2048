@@ -1,4 +1,3 @@
-import pygame
 from game import *
 
 score = 0
@@ -11,16 +10,13 @@ while run:
     timer.tick(fps)
     screen.fill('gray')
 
-
     render_board(score, high_score)
     render_pieces(board_values)
-
 
     if spawn_new or init_count < 2:
         board_values, game_over = spawn_new_piece(board_values)
         spawn_new = False
         init_count += 1
-
 
     if direction:
         board_values, score = update_board(direction, board_values, score)
