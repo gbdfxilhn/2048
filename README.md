@@ -15,7 +15,7 @@
 Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/yourusername/2048.git
+git clone https://github.com/gbdfxilhn/2048.git
 ```
 
 Navigate to the project directory:
